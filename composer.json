@@ -1,18 +1,26 @@
 {
-  "require": {
-    "php": "^8.1"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^9.5.23"
-  },
-  "autoload": {
-    "psr-4": {
-      "ESFramework\\": "src/"
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5.23",
+        "illuminate/support": "^v9.0.0",
+        "illuminate/container": "^v9.0.0",
+        "illuminate/collections": "^v9.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ESFramework\\": "src/",
+            "Bank\\": "bank/src/"
+        },
+        "files": [
+            "boot.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ESFramework\\Tests\\": "tests/",
+            "Bank\\Tests\\": "bank/tests/"
+        }
     }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "ESFramework\\Tests\\": "tests/"
-    }
-  }
 }
