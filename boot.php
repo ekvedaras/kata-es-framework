@@ -1,5 +1,9 @@
 <?php
 
+use ESFramework\EventConsumerStrategy;
+use ESFramework\InflectHandlerNamesFromType;
+use ESFramework\InMemoryMessageRepository;
+use ESFramework\MessageRepository;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\BindingResolutionException;
 
@@ -7,12 +11,12 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 /**
  * @template T
- * @param class-string<T> $abstract
- * @param ...$args
+ * @param class-string<T>|null $abstract
+ * @param array $args
  * @return Container|T
  * @throws BindingResolutionException
  */
-function resolve(string $abstract = null, $args = []) {
+function resolve(string $abstract = null, array $args = []) {
     if (is_null($abstract)) {
         return Container::getInstance();
     }
@@ -20,5 +24,5 @@ function resolve(string $abstract = null, $args = []) {
     return Container::getInstance()->make($abstract, $args);
 }
 
-resolve()->bind(\ESFramework\MessageRepository::class, \ESFramework\InMemoryMessageRepository::class);
-resolve()->bind(\ESFramework\EventConsumerStrategy::class, \ESFramework\InflectHandlerNamesFromType::class);
+resolve()->bind(MessageRepository::class, InMemoryMessageRepository::class);
+resolve()->bind(EventConsumerStrategy::class, InflectHandlerNamesFromType::class);
