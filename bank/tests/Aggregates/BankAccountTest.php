@@ -46,6 +46,7 @@ class BankAccountTest extends TestCase
 
     public function test_it_can_persist()
     {
+        /** @var InMemoryMessageRepository $repository */
         $repository = resolve()->instance(MessageRepository::class, new InMemoryMessageRepository());
 
         BankAccount::retrieve('123')
